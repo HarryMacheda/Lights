@@ -3,3 +3,5 @@
 obj/
 bin/
 build/
+/RaspberryPiLights/.vs/RaspberryPiLights/DesignTimeBuild/.dtbcache.v2
+/RaspberryPiLights/obj/project.assets.json
