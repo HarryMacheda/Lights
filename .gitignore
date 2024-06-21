@@ -1,2 +1,5 @@
-.vs
-.git
+.vs/
+.git/
+obj/
+bin/
+build/
