@@ -9,7 +9,7 @@ using System.Drawing;
 using LightsFramework.JobParameters;
 using Iot.Device.Ws28xx;
 using Iot.Device.Graphics;
-
+using Utility.Types;
 
 namespace LightJobs.SingleRunJobs
 {
@@ -30,12 +30,12 @@ namespace LightJobs.SingleRunJobs
         }
 
 
-        private Color _colour;
+        private List<Colour> _colours;
 
         public override JobState Initiate(params object[] args)
         {
-            Argument ColourArg = new Argument("Color", args[0] != null ? args[0].ToString() : "");
-            _colour = (Color)ColourArg.Value;
+            Argument ColourArg = new Argument("List<Colour>", args[0] != null ? args[0].ToString() : "");
+            _colours = (List<Colour>)ColourArg.Value;
             _state.Status = JobStatus.Ready;
             return _state;
         }
@@ -45,10 +45,13 @@ namespace LightJobs.SingleRunJobs
             try
             {
                 RawPixelContainer image = strip.Image;
+
+                List<Colour> colours = Colour.Gradient(_colours, LedCount, true);
+
                 image.Clear();
-                for (int i = 0; i <= 250; i++)
+                for (int i = 0; i <= LedCount; i++)
                 {
-                    image.SetPixel(i, 0, _colour);
+                    image.SetPixel(i, 0, colours[i]);
                 }
 
                 strip.Update();

@@ -45,7 +45,7 @@ namespace LightJobs.SingleRunJobs
             {
                 RawPixelContainer image = strip.Image;
                 image.Clear();
-                for (int i = 0; i <= 250; i++)
+                for (int i = 0; i <= LedCount; i++)
                 {
                     image.SetPixel(i, 0, _colour);
                 }

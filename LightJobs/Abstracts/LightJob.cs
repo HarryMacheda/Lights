@@ -10,6 +10,7 @@ namespace LightJobs.Abstracts
 {
     public abstract class LightJob : IJob
     {
+        public static int LedCount { get { return 250; } }
         public abstract string JobName { get; }
         public abstract string JobDescription { get; }
         public abstract ApiArgument[] Arguments { get; }

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace LightsFramework.Jobs
 {
-    internal interface IJobManager
+    public interface IJobManager
     {
+        public IJob CurrentJob { get; }
+        public Task<bool> StopCurrentJob();
+        public Task<bool> QueueJob(IJob job);
+        public Task<bool> StartCurrentJob();
+
     }
 }
