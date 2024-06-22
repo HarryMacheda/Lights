@@ -18,10 +18,10 @@ namespace LightsFramework.JobParameters
             Argument = argument;
         }
 
-        public ApiArgument(string name, string tpe, string value)
+        public ApiArgument(string name, string type, string value)
         {
             Name = name;
-            Argument = new Argument(tpe, value);
+            Argument = new Argument(type, value);
         }
     }
 }

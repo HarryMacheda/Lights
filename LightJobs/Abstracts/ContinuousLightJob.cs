@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LightJobs.Abstracts
 {
-    public abstract class ContinuousLightJob
+    public abstract class ContinuousLightJob : LightJob
     {
         public abstract JobState RunJobStep(Ws2812b strip, int step);
     }
