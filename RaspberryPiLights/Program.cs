@@ -4,13 +4,23 @@ using System.Device.Spi;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddMvc();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHostedService<LightBackgroundTask>();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+    builder =>
+    {
+        builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+    });
+});
+
 
 //Configure the light strip
 SpiConnectionSettings spiSettings = new SpiConnectionSettings(0, 0)
@@ -19,7 +29,7 @@ SpiConnectionSettings spiSettings = new SpiConnectionSettings(0, 0)
     Mode = SpiMode.Mode0,
     DataBitLength = 8
 };
-LightJobManager.LedStrip = new(SpiDevice.Create(spiSettings), LightJobManager.LedCount);
+//LightJobManager.LedStrip = new(SpiDevice.Create(spiSettings), LightJobManager.LedCount);
 
 var app = builder.Build();
 
@@ -30,6 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

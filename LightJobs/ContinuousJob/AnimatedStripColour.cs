@@ -1,4 +1,5 @@
-﻿using Iot.Device.Ws28xx;
+﻿using Iot.Device.Bh1745;
+using Iot.Device.Ws28xx;
 using LightJobs.Abstracts;
 using LightsFramework.JobParameters;
 using LightsFramework.Jobs;
@@ -22,14 +23,14 @@ namespace LightJobs.ContinuousJob
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colours","List<Colour>",""),
-                    new ApiArgument("Step count","Int","")
+                    new ApiArgument("Colours","System.Collections.Generic.List`1[[Utility.Types.Colour, Utility]]", "#FFF"),
+                    new ApiArgument("Step count","System.Int32","0")
                 };
             }
         }
 
 
-        private List<Colour> _colours;
+        private List<List<Colour>> _colours;
 
         public override JobState Initiate(params object[] args)
         {
@@ -41,10 +42,10 @@ namespace LightJobs.ContinuousJob
 
             //Calculate the gradient
             List<Colour> gradient = Colour.Gradient(colours, steps, true);
-
             for (int i = 0; i < steps; i++)
             {
-                _colours.Add(gradient[i]);
+                int offset = gradient.Count - ((int)(LedCount / steps) * i);
+                _colours.Add(gradient.Skip(offset).Concat(gradient.Take(offset)).ToList());
             }
             _state.Status = JobStatus.Ready;
             return _state;
@@ -58,7 +59,7 @@ namespace LightJobs.ContinuousJob
                 image.Clear();
                 for (int i = 0; i <= LedCount; i++)
                 {
-                    image.SetPixel(i, 0, _colours[step]);
+                    image.SetPixel(i, 0, _colours[step][i]);
                 }
 
                 strip.Update();

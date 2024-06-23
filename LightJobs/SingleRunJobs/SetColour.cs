@@ -23,7 +23,7 @@ namespace LightJobs.SingleRunJobs
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colour","Color","")
+                    new ApiArgument("Colour","Utility.Types.Colour, Utility","#FFF")
                 };
             }
         }

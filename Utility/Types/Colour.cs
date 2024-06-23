@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -20,6 +21,14 @@ namespace Utility.Types
             R = r;
             G = g;
             B = b;
+        }
+
+        public Colour(string hex)
+        {
+            Color c = System.Drawing.ColorTranslator.FromHtml(hex);
+            R = c.R;
+            G = c.G;
+            B = c.B;
         }
 
         public static List<Colour> Gradient(Colour start, Colour end, int steps)
@@ -47,6 +56,10 @@ namespace Utility.Types
             return result;
         }
 
+        public static implicit operator Colour(string colour)
+        {
+            return (Colour)System.Drawing.ColorTranslator.FromHtml(colour);
+        }
 
         public static implicit operator System.Drawing.Color(Colour colour)
         {

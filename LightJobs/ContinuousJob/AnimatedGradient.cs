@@ -23,8 +23,8 @@ namespace LightJobs.ContinuousJob
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colours","List<Colour>",""),
-                    new ApiArgument("Step count","Int","")
+                    new ApiArgument("Colours","System.Collections.Generic.List`1[[Utility.Types.Colour, Utility]]", "#FFF"),
+                    new ApiArgument("Step count","System.Int32","0")
                 };
             }
         }
