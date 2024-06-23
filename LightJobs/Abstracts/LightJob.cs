@@ -11,6 +11,7 @@ namespace LightJobs.Abstracts
 {
     public abstract class LightJob : IJob
     {
+        public string Job { get { return this.GetType().ToString() + ", LightJobs";  } }
         [JsonIgnore]
         public static int LedCount { get { return 250; } }
         public abstract string JobName { get; }

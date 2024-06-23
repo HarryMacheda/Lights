@@ -29,11 +29,11 @@ namespace LightsFramework.JobParameters
                     object element = null;
                     if (!dataType.IsPrimitive)
                     {
-                        element = Activator.CreateInstance(elementType, value);
+                        element = Activator.CreateInstance(elementType, stringElements[i]);
                     }
                     else
                     {
-                        element = Convert.ChangeType(value, dataType);
+                        element = Convert.ChangeType(stringElements[i], dataType);
 
                     }
                     values.Add(element);

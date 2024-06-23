@@ -34,10 +34,10 @@ namespace LightJobs.ContinuousJob
 
         public override JobState Initiate(params object[] args)
         {
-            Argument ColourArg = new Argument("List<Colour>", args[0] != null ? args[0].ToString() : "");
+            Argument ColourArg = new Argument("System.Collections.Generic.List`1[[Utility.Types.Colour, Utility]]", args[0] != null ? args[0].ToString() : "");
             List<Colour> colours = (List<Colour>)ColourArg.Value;
 
-            Argument IntArg = new Argument("Int", args[1] != null ? args[1].ToString() : "");
+            Argument IntArg = new Argument("int", args[1] != null ? args[1].ToString() : "");
             int steps = (int)IntArg.Value;
 
             //Calculate the gradient

@@ -34,8 +34,8 @@ namespace LightJobs.SingleRunJobs
 
         public override JobState Initiate(params object[] args)
         {
-            Argument ColourArg = new Argument("List<Colour>", args[0] != null ? args[0].ToString() : "");
-            _colours = (List<Colour>)ColourArg.Value;
+            Argument ColourArg = new Argument("System.Collections.Generic.List`1[[Utility.Types.Colour, Utility]]", args[0] != null ? args[0].ToString() : "");
+            _colours = (List<Colour>)((List<object>)ColourArg.Value).Cast<Colour>().ToList();
             _state.Status = JobStatus.Ready;
             return _state;
         }
