@@ -31,6 +31,8 @@ SpiConnectionSettings spiSettings = new SpiConnectionSettings(0, 0)
 };
 //LightJobManager.LedStrip = new(SpiDevice.Create(spiSettings), LightJobManager.LedCount);
 
+RaspberryPiLights.Config.Settings.Initiate();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

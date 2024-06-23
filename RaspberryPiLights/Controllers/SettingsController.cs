@@ -9,6 +9,14 @@ namespace RaspberryPiLights.Controllers
     [Route("api/settings")]
     public class SettingsController : Controller
     {
+
+        [Route("")]
+        [HttpGet]
+        public string GetSettings()
+        {
+            return JsonConvert.SerializeObject(Config.Settings.GetSettings());
+        }
+
         [Route("jobs")]
         [HttpGet]
         public string Get()
