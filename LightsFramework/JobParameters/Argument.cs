@@ -5,16 +5,19 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LightsFramework.JobParameters.ApiArgument;
 
 namespace LightsFramework.JobParameters
 {
     public class Argument
     {
         public object? Value { get; set; }
+        public ControlType ControlType { get; set; }
 
-        public Argument(string type, string value) 
+        public Argument(ControlType type, string value) 
         {
-            Type? dataType = Type.GetType(type);
+            ControlType = type;
+            Type? dataType = Type.GetType(ControlName[type]);
 
             if (dataType == null) { throw new Exception("Specified data type " + type + " is not a valid datatype"); }
 

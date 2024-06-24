@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnitsNet;
 using Utility.Types;
+using static LightsFramework.JobParameters.ApiArgument;
 
 namespace LightJobs.ContinuousJob
 {
@@ -23,8 +24,8 @@ namespace LightJobs.ContinuousJob
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colours","System.Collections.Generic.List`1[[Utility.Types.Colour, Utility]]", "#FFF"),
-                    new ApiArgument("Step count","System.Int32","0")
+                    new ApiArgument("Colours",ControlType.ColourList, "#FFF"),
+                    new ApiArgument("Step count",ControlType.Int,"0")
                 };
             }
         }
@@ -34,10 +35,10 @@ namespace LightJobs.ContinuousJob
 
         public override JobState Initiate(params object[] args)
         {
-            Argument ColourArg = new Argument("System.Collections.Generic.List`1[[Utility.Types.Colour, Utility]]", args[0] != null ? args[0].ToString() : "");
+            Argument ColourArg = new Argument(ControlType.ColourList, args[0] != null ? args[0].ToString() : "");
             List<Colour> colours = (List<Colour>)ColourArg.Value;
 
-            Argument IntArg = new Argument("int", args[1] != null ? args[1].ToString() : "");
+            Argument IntArg = new Argument(ControlType.Int, args[1] != null ? args[1].ToString() : "");
             int steps = (int)IntArg.Value;
 
             //Calculate the gradient

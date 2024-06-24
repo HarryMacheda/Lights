@@ -10,6 +10,7 @@ using LightsFramework.JobParameters;
 using Iot.Device.Ws28xx;
 using Iot.Device.Graphics;
 using Utility.Types;
+using static LightsFramework.JobParameters.ApiArgument;
 
 namespace LightJobs.SingleRunJobs
 {
@@ -24,7 +25,7 @@ namespace LightJobs.SingleRunJobs
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colour","Utility.Types.Colour, Utility","#FFF")
+                    new ApiArgument("Colour",ControlType.Colour,"#FFF")
                 };
             }
         }
@@ -34,7 +35,7 @@ namespace LightJobs.SingleRunJobs
 
         public override JobState Initiate(params object[] args)
         {
-            Argument ColourArg = new Argument("Utility.Types.Colour, Utility", args[0] != null ? args[0].ToString() : "");
+            Argument ColourArg = new Argument(ControlType.Colour, args[0] != null ? args[0].ToString() : "");
             _colour = (Colour) ColourArg.Value;
             _state.Status = JobStatus.Ready;
             return _state;
