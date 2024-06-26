@@ -1,4 +1,6 @@
 ﻿using ApiClient.Abstracts;
+using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace ApiClient
 {
@@ -13,9 +15,10 @@ namespace ApiClient
             return await MakeRequest("/api/settings/jobs", null, "GET");
         }
 
-        public override async Task<object> GetSettings()
+        public override async Task<ApiClientSettings> GetSettings()
         {
-            return await MakeRequest("/api/settings", null, "GET");
+            object response = await MakeRequest("/api/settings", null, "GET");
+            return JsonConvert.DeserializeObject<ApiClientSettings>(response.ToString());
         }
         public override async Task<object> GetCurrentJob()
         {

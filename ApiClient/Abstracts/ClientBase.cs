@@ -17,9 +17,10 @@ namespace ApiClient.Abstracts
         {
             _host = host;
         }
+        public string ID { get; set; }
 
         public abstract Task<object> GetJobs();
-        public abstract Task<object> GetSettings();
+        public abstract Task<ApiClientSettings> GetSettings();
         public abstract Task<object> GetCurrentJob();
 
         public abstract Task<object> StopCurrentJob();
@@ -47,7 +48,7 @@ namespace ApiClient.Abstracts
             }
 
             string responseBody = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject(responseBody);
+            return responseBody;
         }
 
     }
