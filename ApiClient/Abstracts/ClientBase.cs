@@ -32,8 +32,11 @@ namespace ApiClient.Abstracts
 
 
             HttpContent content = null;
-            var json = JsonConvert.SerializeObject(parameters);
-            content = new StringContent(json, Encoding.UTF8, "application/json");
+            if(parameters != null)
+            {
+                var json = JsonConvert.SerializeObject(parameters.Select((x) => x.ToString()).ToArray());
+                content = new StringContent(json, Encoding.UTF8, "application/json");
+            }
 
             HttpResponseMessage response;
             switch (method)
