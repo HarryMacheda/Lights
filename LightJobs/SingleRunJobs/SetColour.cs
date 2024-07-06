@@ -17,8 +17,7 @@ namespace LightJobs.SingleRunJobs
     public class SetColour : SingleRunLightJob
     {
         public override string JobName { get { return "Set Colour"; } }
-        public override string JobDescription { get { return "Set the strip to a given number";  } }
-
+        public override string JobDescription { get { return "Set the strip to a given colour";  } }
         public override ApiArgument[] Arguments
         {
             get

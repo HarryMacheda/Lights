@@ -10,6 +10,7 @@ namespace LightJobs.Abstracts
 {
     public abstract class ContinuousLightJob : LightJob
     {
+        public int StepCount { get; set; }
         public abstract JobState RunJobStep(Ws2812b strip, int step);
     }
 }

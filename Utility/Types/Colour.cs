@@ -30,6 +30,10 @@ namespace Utility.Types
             G = c.G;
             B = c.B;
         }
+        public override string ToString()
+        {
+            return "{" + R.ToString() + ", " + G.ToString() + ", " + B.ToString() + "}";
+        }
 
         public static List<Colour> Gradient(Colour start, Colour end, int steps)
         {
@@ -49,9 +53,10 @@ namespace Utility.Types
             if (loop) { colours.Add(colours[0]); }
             List<Colour> result = new List<Colour>();
             int countPerGradient = steps / (colours.Count - 1);
-            for (int i = 0; i < colours.Count; i++)
+            int rangeCount = colours.Count - 1;
+            for (int i = 0; i < rangeCount; i++) 
             {
-                result.AddRange(Gradient(colours[i], colours[i + 1], i == (colours.Count-1) ? steps - result.Count : countPerGradient));
+                result.AddRange(Gradient(colours[i], colours[i + 1], i == (rangeCount - 1) ? steps - result.Count : countPerGradient));
             }
             return result;
         }
@@ -63,12 +68,12 @@ namespace Utility.Types
 
         public static implicit operator System.Drawing.Color(Colour colour)
         {
-            return System.Drawing.Color.FromArgb((int)Math.Max(0,colour.R), (int)Math.Max(0, colour.G), (int)Math.Max(0, colour.B));
+            return System.Drawing.Color.FromArgb((int)Math.Max(0, colour.G), (int)Math.Max(0, colour.R), (int)Math.Max(0, colour.B)); //led strip uses grb
         }
 
         public static implicit operator Colour(System.Drawing.Color color)
         {
-            return new Colour(color.G, color.R, color.B);
+            return new Colour(color.R, color.G, color.B);
         }
 
         public static Colour operator -(Colour colour1, Colour colour2)
@@ -92,5 +97,6 @@ namespace Utility.Types
             return new Colour(colour.R / scale, colour.G / scale, colour.B / scale);
 
         }
+
     }
 }

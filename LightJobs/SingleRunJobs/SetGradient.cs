@@ -16,8 +16,8 @@ namespace LightJobs.SingleRunJobs
 {
     public class SetGradient : SingleRunLightJob
     {
-        public override string JobName { get { return "Set Colour"; } }
-        public override string JobDescription { get { return "Set the strip to a given number"; } }
+        public override string JobName { get { return "Set Gradient"; } }
+        public override string JobDescription { get { return "Set the strip to a given gradient"; } }
 
         public override ApiArgument[] Arguments
         {
@@ -50,7 +50,7 @@ namespace LightJobs.SingleRunJobs
                 List<Colour> colours = Colour.Gradient(_colours, LedCount, true);
 
                 image.Clear();
-                for (int i = 0; i <= LedCount; i++)
+                for (int i = 0; i < LedCount; i++)
                 {
                     image.SetPixel(i, 0, colours[i]);
                 }

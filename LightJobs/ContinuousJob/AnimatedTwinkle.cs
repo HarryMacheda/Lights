@@ -35,14 +35,16 @@ namespace LightJobs.ContinuousJob
         public override JobState Initiate(params object[] args)
         {
             Argument ColourArg = new Argument(ControlType.ColourList, args[0] != null ? args[0].ToString() : "");
-            List<Colour> colours = (List<Colour>)ColourArg.Value;
+            List<Colour> colours = (List<Colour>)((List<object>)ColourArg.Value).Cast<Colour>().ToList();
 
             Argument IntArg = new Argument(ControlType.Int, args[1] != null ? args[1].ToString() : "");
             int steps = (int)IntArg.Value;
-
+            StepCount = steps;
             //Calculate the gradient
             List<Colour> gradient = Colour.Gradient(colours, steps, true);
             Random rnd = new Random();
+
+            _colours = new List<List<Colour>>();
 
             for (int i = 0; i < LedCount; i++)
             {
@@ -60,13 +62,12 @@ namespace LightJobs.ContinuousJob
             {
                 RawPixelContainer image = strip.Image;
                 image.Clear();
-                for (int i = 0; i <= LedCount; i++)
+                for (int i = 0; i < LedCount; i++)
                 {
-                    image.SetPixel(i, 0, _colours[i][step]);
+                    image.SetPixel(i, 0, _colours[i][step % StepCount]);
                 }
 
                 strip.Update();
-                _state.Status = JobStatus.Stopped;
             }
             catch (Exception ex)
             {

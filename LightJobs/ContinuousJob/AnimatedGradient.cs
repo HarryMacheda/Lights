@@ -36,17 +36,22 @@ namespace LightJobs.ContinuousJob
         public override JobState Initiate(params object[] args)
         {
             Argument ColourArg = new Argument(ControlType.ColourList, args[0] != null ? args[0].ToString() : "");
-            List<Colour> colours = (List<Colour>)ColourArg.Value;
+            List<Colour> colours = (List<Colour>)((List<object>)ColourArg.Value).Cast<Colour>().ToList();
 
             Argument IntArg = new Argument(ControlType.Int, args[1] != null ? args[1].ToString() : "");
             int steps = (int)IntArg.Value;
-
+            StepCount = steps;
             //Calculate the gradient
             List<Colour> gradient = Colour.Gradient(colours, LedCount, true);
+            _colours = new List<List<Colour>>();
+
+            //Generate an array of split indexes
+
 
             for (int i = 0; i < steps; i++)
             {
-                _colours.Add(gradient.Skip(gradient.Count - ((int)(LedCount/steps) * i)).Concat(gradient.Take(gradient.Count - ((int)(LedCount / steps) * i))).ToList());
+                int splitIndex = gradient.Count - ((int)(LedCount / steps) * i);
+                _colours.Add(gradient.Skip(splitIndex).Concat(gradient.Take(splitIndex)).ToList());
             }
             _state.Status = JobStatus.Ready;
             return _state;
@@ -58,13 +63,12 @@ namespace LightJobs.ContinuousJob
             {
                 RawPixelContainer image = strip.Image;
                 image.Clear();
-                for (int i = 0; i <= LedCount; i++)
+                for (int i = 0; i < LedCount; i++)
                 {
-                    image.SetPixel(i, 0, _colours[step][i]);
+                    image.SetPixel(i, 0, _colours[step % StepCount][i]);
                 }
-
+                Console.WriteLine("Step: " + step.ToString() + " " + _colours[step % StepCount][0].ToString());
                 strip.Update();
-                _state.Status = JobStatus.Stopped;
             }
             catch (Exception ex)
             {

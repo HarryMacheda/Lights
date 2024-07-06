@@ -29,7 +29,7 @@ SpiConnectionSettings spiSettings = new SpiConnectionSettings(0, 0)
     Mode = SpiMode.Mode0,
     DataBitLength = 8
 };
-//LightJobManager.LedStrip = new(SpiDevice.Create(spiSettings), LightJobManager.LedCount);
+LightJobManager.LedStrip = new(SpiDevice.Create(spiSettings), LightJobManager.LedCount);
 
 RaspberryPiLights.Config.Settings.Initiate();
 

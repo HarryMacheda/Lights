@@ -19,7 +19,7 @@ namespace LightJobs.Abstracts
         public abstract ApiArgument[] Arguments { get; }
         [JsonIgnore]
         protected JobState _state;
-        [JsonIgnore]
+        [JsonProperty]
         public JobState State { get { return _state; } }
         public LightJob(params object[] args)
         {

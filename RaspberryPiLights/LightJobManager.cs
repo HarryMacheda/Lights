@@ -47,6 +47,10 @@ namespace RaspberryPiLights
             {
                 _isContinuousJob = true;
             }
+            else
+            {
+                _isContinuousJob = false;
+            }
 
             return Task.FromResult(true);
         }
@@ -67,6 +71,7 @@ namespace RaspberryPiLights
             {
                 jobC.RunJobStep(_ledStrip, step);
                 _currentJob = jobC;
+                step++;
                 Thread.Sleep(50);
             }
             return Task.FromResult(true);
