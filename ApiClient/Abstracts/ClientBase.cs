@@ -19,6 +19,8 @@ namespace ApiClient.Abstracts
         }
         public string ID { get; set; }
 
+        public string Name { get; set; }
+
         public abstract Task<object> GetJobs();
         public abstract Task<ApiClientSettings> GetSettings();
         public abstract Task<object> GetCurrentJob();

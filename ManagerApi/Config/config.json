@@ -1,5 +1,8 @@
 ﻿{
   "LightWorkers": [
-    "http://localhost:5000"
+    {
+      "Host": "http://192.168.1.21",
+      "Name": "Harry's Bedroom"
+    }
   ]
 }

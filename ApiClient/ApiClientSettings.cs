@@ -8,6 +8,6 @@ namespace ApiClient
 {
     public class ApiClientSettings
     {
-        public string AppId { get; set; }
+        public string AppId { get; set; } 
     }
 }
