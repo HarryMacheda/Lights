@@ -14,6 +14,18 @@ namespace LightsFramework.JobParameters
         public object? Value { get; set; }
         public ControlType ControlType { get; set; }
 
+        public Argument() { }
+
+        public Argument(ControlType type, string value, bool useDefault) 
+        {
+            if (useDefault)
+            {
+                ControlType = type;
+                Value = value;
+
+            }
+        }
+
         public Argument(ControlType type, string value) 
         {
             ControlType = type;

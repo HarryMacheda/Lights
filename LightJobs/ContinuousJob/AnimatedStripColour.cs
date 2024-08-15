@@ -15,7 +15,7 @@ namespace LightJobs.ContinuousJob
 {
     public class AnimatedStripColour : ContinuousLightJob
     {
-        public override string JobName { get { return "Set Animated Gradient"; } }
+        public override string JobName { get { return "Set Animated Strip Gradient"; } }
         public override string JobDescription { get { return "Set the strip to a given gradient and have the strip animate the same colour"; } }
 
         public override ApiArgument[] Arguments
@@ -24,8 +24,8 @@ namespace LightJobs.ContinuousJob
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colours",ControlType.ColourList, "#FFF"),
-                    new ApiArgument("Step count",ControlType.Int,"0")
+                    new ApiArgument("Colours",new Argument(ControlType.ColourList, "#FFFFFF",true)),
+                    new ApiArgument("Step count", new Argument(ControlType.Int,"0",true))
                 };
             }
         }

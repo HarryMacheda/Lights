@@ -1,6 +1,8 @@
 ﻿using ApiClient.Abstracts;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using LightsFramework.JobParameters;
 
 namespace ApiClient
 {
@@ -12,7 +14,18 @@ namespace ApiClient
 
         public override async Task<object> GetJobs()
         {
-            return await MakeRequest("/api/settings/jobs", null, "GET");
+            object response = await MakeRequest("/api/settings/jobs", null, "GET");
+            JObject responseObject = JObject.Parse(response.ToString());
+
+            JArray RunOnceJobs = (JArray)responseObject.GetValue("RunOnceJobs");
+            JArray ContinuousJobs = (JArray)responseObject.GetValue("ContinuousJobs");
+
+
+            return new
+            {
+                RunOnceJobs = RunOnceJobs.Select(jValue => jValue.ToObject<JobReturn>()).ToList(),
+                ContinuousJobs = ContinuousJobs.Select(jValue => jValue.ToObject<JobReturn>()).ToList()
+            };
         }
 
         public override async Task<ApiClientSettings> GetSettings()
@@ -34,4 +47,16 @@ namespace ApiClient
             return await MakeRequest("/api/jobs/startjob?job=" + job, parameters, "POST");
         }
     }
+
+
+    public class JobReturn
+    {
+        public string Job { get; set; }
+        public ApiArgument[] Arguments { get; set; }
+        public string JobName { get; set; }
+        public string JobDescription { get; set; }
+
+        public JobReturn() { }
+    }
+
 }

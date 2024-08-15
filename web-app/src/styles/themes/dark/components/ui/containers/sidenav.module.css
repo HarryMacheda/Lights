@@ -1,0 +1,12 @@
+
+.SidenavClosed  {
+    background-color: rgb(15, 0, 37);
+}
+
+.SidenavOpen    {
+    background-color: rgb(15, 0, 37);
+}
+
+.Caret {
+    background-color: rgb(28, 15, 48);    
+}

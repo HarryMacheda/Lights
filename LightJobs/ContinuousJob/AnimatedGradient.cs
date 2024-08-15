@@ -24,8 +24,8 @@ namespace LightJobs.ContinuousJob
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colours",ControlType.ColourList, "#FFF"),
-                    new ApiArgument("Step count",ControlType.Int,"0")
+                    new ApiArgument("Colours", new Argument(ControlType.ColourList, "#FFFFFF",true)),
+                    new ApiArgument("Step count", new Argument(ControlType.Int,"0",true))
                 };
             }
         }

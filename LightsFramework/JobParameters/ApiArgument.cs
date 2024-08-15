@@ -36,6 +36,12 @@ namespace LightsFramework.JobParameters
         public String Name { get; set; }
         public Argument Argument { get; set; }
 
+        public ApiArgument()
+        {
+            Name = "";
+            Argument = null;
+        }
+
         public ApiArgument(string name, Argument argument)
         {
             Name = name;

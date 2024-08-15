@@ -25,7 +25,7 @@ namespace LightJobs.SingleRunJobs
             {
                 return new ApiArgument[]
                 {
-                    new ApiArgument("Colours",ControlType.ColourList,"#FFF")
+                    new ApiArgument("Colours", new Argument(ControlType.ColourList,"#FFFFFF", true))
                 };
             }
         }

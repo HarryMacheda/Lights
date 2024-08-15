@@ -1,0 +1,33 @@
+.DeviceList {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 5px;
+}
+
+.DeviceList *
+{
+    margin-bottom: 10px;
+}
+
+.DeviceList :last-child
+{
+    margin-bottom: 0%;
+}
+
+.Device {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+}
+.Device .Span {
+    display: block;
+    min-width: 50%;
+    min-height: 20px;
+}
+
+.Template {
+    width: 100%;
+    height: 50px;
+}

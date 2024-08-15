@@ -31,8 +31,11 @@ namespace ManagerApi.Config
                     }
                     catch (Exception ex) {
                     }
-                    client.Name = connect.Name;
-                    Clients.Add(client);
+                    finally
+                    {
+                        client.Name = connect.Name;
+                        Clients.Add(client);
+                    }
                 }
             }
         }

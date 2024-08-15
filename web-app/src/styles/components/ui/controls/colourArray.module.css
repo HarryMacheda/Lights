@@ -1,0 +1,10 @@
+.ColoursContainer
+{
+    width:100%
+}
+
+.ColoursContainer span {
+    background-color: black;
+    width: 50%;
+    display: inline-block;
+}
