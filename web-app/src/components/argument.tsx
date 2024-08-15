@@ -19,7 +19,7 @@ export function Argument({name, value, type, handleChange}:CustomComponentProps)
             return <Controls.colour value={value} handleChange={handleChange}/>
         case 5:
             let values = value.split(',');
-            return <Controls.colourArray name={name} value={values} handleChange={handleChange}/>
+            return <Controls.ColourArray name={name} value={values} handleChange={handleChange}/>
         default:
             return <p>{value}</p>
     }

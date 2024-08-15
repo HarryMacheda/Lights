@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 export function DeviceList()
 {
-    const [devices, setDevices] = useState([]);
+    const [devices, setDevices] = useState<any>([]);
     const [isLoading, setLoading] = useState(true);
 
     const theme = useContext(themeContext)
@@ -34,7 +34,7 @@ export function DeviceList()
     }
     return(
         <div className={[styles.devices.DeviceList, theme.components.devices.DeviceList].join(' ')}>
-        {devices.map(function(x, i){
+        {devices.map(function(x:any, i:number){
             return (
                 <Device key={i} Id={x.id} Name={x.name} State={1}/>
             );
@@ -56,9 +56,9 @@ function Device(props:DeviceProps){
 
     return(
             <div className={[styles.devices.Device, theme.components.devices.Device].join(' ')}>
-                <Link class="Link" href={"/" + props.Id}>
+                <Link className="Link" href={"/" + props.Id}>
                     <span className={styles.devices.Span}>{props.Name}</span>
-                    <p class="Subtitle">{props.Id}</p>
+                    <p className="Subtitle">{props.Id}</p>
                 </Link>
             </div>
     )

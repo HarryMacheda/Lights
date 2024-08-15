@@ -14,10 +14,10 @@ type CustomComponentProps = Readonly<{
 
 export function Job({ appId, name, description, job, arguments:args }: CustomComponentProps)
 {
-    const [values, setValues] = useState(null);
+    const [values, setValues] = useState<any>(null);
 
     useEffect(() => {
-        const defaultValues = args.map((x) => x.argument.value);
+        const defaultValues = args.map((x:any) => x.argument.value);
         setValues([...defaultValues]);
     }, [job, args]);    
 
@@ -43,7 +43,7 @@ export function Job({ appId, name, description, job, arguments:args }: CustomCom
             <br/><br/>
             <button onClick={() => submitJob()}>submit</button>
             <br/><br/>
-            {args.map((x,i) => {return <Argument name={x.name + " " + job} value={x.argument.value} type={x.argument.controlType} handleChange={(e) => handleChange(i)(e)}/>})}
+            {args.map((x:any, i:number) => {return <Argument key={i} name={x.name + " " + job} value={x.argument.value} type={x.argument.controlType} handleChange={(e) => handleChange(i)(e)}/>})}
         </div>
     )
 }

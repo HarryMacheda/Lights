@@ -28,7 +28,7 @@ export function Jobs({ AppId, update }: { AppId: string, update: (arg: object) =
             }
         };      
           fetchData();
-    }, [])
+    }, [AppId])
 
     if(isLoading){
         return (<>Loading...</>)
@@ -36,16 +36,16 @@ export function Jobs({ AppId, update }: { AppId: string, update: (arg: object) =
     return(
         <SideNav title={"Jobs"}>
             <div>
-                {single.map(function(x, i){
+                {single.map(function(x:any, i:number){
                     return (
-                        <JobListItem name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
+                        <JobListItem key={i} name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
                     );
                 })}
             </div>
             <div>
-                {continuous.map(function(x, i){
+                {continuous.map(function(x:any, i:number){
                     return (
-                        <JobListItem name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
+                        <JobListItem key={i} name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
                     );
                 })}
             </div>

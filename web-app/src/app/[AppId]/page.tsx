@@ -8,11 +8,11 @@ import { Job } from "@/views/job"
 
 export default function Page({ params }: { params: { AppId: string } })
 {
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJob, setSelectedJob] = useState<any>(null);
 
   const storageKey = params.AppId + "_SelectedJob";
 
-  const UpdateJob = async (job) => {
+  const UpdateJob = async (job: any) => {
     //Update job in local storage
     localStorage.setItem(storageKey, JSON.stringify(job))
 

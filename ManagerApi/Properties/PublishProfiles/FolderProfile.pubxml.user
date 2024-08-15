@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Source\Lights\ManagerApi\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2024-08-15T09:07:02.9430873Z;True|2024-08-15T19:02:19.6648040+10:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

@@ -23,12 +23,12 @@ export default function RootLayout({
         <head>
         </head>
         <body>
-          <div class="LayoutContainer">
-            <div class="DeviceListContainer">
+          <div className="LayoutContainer">
+            <div className="DeviceListContainer">
               Device List
               <DeviceList />
             </div>
-            <div class="Content">
+            <div className="Content">
               {children}
             </div>
           </div>

@@ -8,10 +8,10 @@ import styles from '@/styles/components/ui/controls/colourArray.module.css'
 type CustomComponentProps = Readonly<{
     name: string;
     value: string[];
-    handleChange: (arg: object) => void;
+    handleChange: (arg: any) => void;
 }>;
 
-export function colourArray({name, value, handleChange}: CustomComponentProps)
+export function ColourArray({name, value, handleChange}: CustomComponentProps)
 {
     const [values, setValues] = useState([...value]);
 

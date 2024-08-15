@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 type CustomComponentProps = Readonly<{
     value: string;
-    handleChange: (arg: object) => void;
+    handleChange: (arg: any) => void;
 }>;
 
 export function colour({value, handleChange}: CustomComponentProps)

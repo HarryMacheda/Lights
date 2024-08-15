@@ -1,6 +1,6 @@
 
 export class ApiClient {
-    private static readonly API_HOST = 'https://localhost:7128/api';
+    private static readonly API_HOST = 'http://localhost/manager/api';
   
     private static getHeaders(): HeadersInit {
       return {

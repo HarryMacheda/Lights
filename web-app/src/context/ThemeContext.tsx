@@ -4,7 +4,7 @@ import {default as themes} from '../styles/themes'
 
 export const themeContext = createContext(themes.dark)
 
-export function useThemeContext({children})
+export function useThemeContext({children}:any)
 {
     return (
         <themeContext.Provider value={themes.dark}>
