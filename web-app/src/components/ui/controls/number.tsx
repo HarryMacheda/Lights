@@ -9,6 +9,6 @@ type CustomComponentProps = Readonly<{
 export function number({value, handleChange}: CustomComponentProps)
 {
     return (
-        <input type="number" defaultValue={value} onChange={(e) => handleChange(e.target.value)}/>
+        <input type="number" value={value} onChange={(e) => handleChange(e.target.value)}/>
     )
 }

@@ -12,11 +12,7 @@ namespace ManagerApi.Controllers
         [Route("devices")]
         [HttpGet]
         public object GetDevices()
-        {
-            var clients = Settings.Clients;
-            if (clients == null || clients.Count == 0 || clients[0].ID == null) {
-                Settings.Initiate();
-            }
+        { 
             return Settings.Clients;
         }
     }

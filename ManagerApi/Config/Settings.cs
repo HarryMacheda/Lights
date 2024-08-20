@@ -10,7 +10,7 @@ namespace ManagerApi.Config
 
         public static List<ApiClient.Abstracts.ClientBase> Clients { get; set;}
 
-        public static async void Initiate()
+        public static async Task<object> Initiate()
         {
             using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "/config/config.json"))
             {
@@ -38,6 +38,8 @@ namespace ManagerApi.Config
                     }
                 }
             }
+
+            return Task.FromResult(Clients);
         }
 
         public static object GetSettings()

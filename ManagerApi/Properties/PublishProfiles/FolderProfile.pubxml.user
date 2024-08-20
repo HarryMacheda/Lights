@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Source\Lights\ManagerApi\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2024-08-15T09:07:02.9430873Z;True|2024-08-15T19:02:19.6648040+10:00;</History>
+    <History>True|2024-08-20T05:35:54.5634642Z;True|2024-08-20T15:34:37.3954662+10:00;True|2024-08-15T19:24:19.1494726+10:00;True|2024-08-15T19:07:02.9430873+10:00;True|2024-08-15T19:02:19.6648040+10:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

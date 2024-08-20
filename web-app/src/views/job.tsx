@@ -15,9 +15,16 @@ type CustomComponentProps = Readonly<{
 export function Job({ appId, name, description, job, arguments:args }: CustomComponentProps)
 {
     const [values, setValues] = useState<any>(null);
+    const ArgumentKey = "JobArguments_" + appId + " " + job;
 
     useEffect(() => {
-        const defaultValues = args.map((x:any) => x.argument.value);
+        let defaultValues = args.map((x:any) => x.argument.value);
+        //Store default in local storage
+        let storedValue = localStorage.getItem(ArgumentKey);
+        if(storedValue){
+            defaultValues = JSON.parse(storedValue);
+        }
+
         setValues([...defaultValues]);
     }, [job, args]);    
 
@@ -25,16 +32,20 @@ export function Job({ appId, name, description, job, arguments:args }: CustomCom
         if(values == null){ return; }
         let old = [...values];
         old[index] = data;
-        setValues(old);       
+        setValues([...old]);       
     }
 
     const submitJob = async () => {
-        //
+        //save the values to storage
+        localStorage.setItem(ArgumentKey, JSON.stringify(values))
         let url = "/worker/startjob/" + encodeURIComponent(appId) + "/" + encodeURIComponent(job);
         let response = await ApiClient.post(url, values);
         console.log(response);
     }
 
+    if(!values){
+        return"Loading...";
+    }
     return (
         <div>
             {name}<br/>
@@ -43,7 +54,7 @@ export function Job({ appId, name, description, job, arguments:args }: CustomCom
             <br/><br/>
             <button onClick={() => submitJob()}>submit</button>
             <br/><br/>
-            {args.map((x:any, i:number) => {return <Argument key={i} name={x.name + " " + job} value={x.argument.value} type={x.argument.controlType} handleChange={(e) => handleChange(i)(e)}/>})}
+            {args.map((x:any, i:number) => {return <Argument key={i} name={x.name + " " + job} value={(values && values.length >0) ? values[i]: null} type={x.argument.controlType} handleChange={(e) => handleChange(i)(e)}/>})}
         </div>
     )
 }

@@ -31,12 +31,11 @@ export function ColourArray({name, value, handleChange}: CustomComponentProps)
         setValues([...newValues]);
     }
     useEffect(() => {
-        handleChange(values.join(','));
+            handleChange(values.join(','));
     }
     ,[values]);
 
     useEffect(() => {
-        console.log(values.join(','));
         setValues([...value]);
     }
     ,[name]);
