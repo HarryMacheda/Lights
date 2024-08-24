@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/styles/text.css"
 
-import "@/styles/app/Lights/layout.css"
+import styles from "./layout.module.css";
 
-import {DeviceList} from '../components/devices'
+import DeviceList from "@/components/lights/devices/deviceList/deviceList";
+
+import AlertManager from "@/components/libraryv2/alerts/manager/manager";
 
 
 export const metadata: Metadata = {
@@ -23,15 +24,17 @@ export default function RootLayout({
         <head>
         </head>
         <body>
-          <div className="LayoutContainer">
-            <div className="DeviceListContainer">
-              Device List
-              <DeviceList />
+          <AlertManager>
+            <div className={styles.LayoutContainer}>
+              <div className={styles.DeviceListContainer}>
+                Device List
+                <DeviceList />
+              </div>
+              <div className={styles.Content}>
+                {children}
+              </div>
             </div>
-            <div className="Content">
-              {children}
-            </div>
-          </div>
+          </AlertManager>
         </body>
       </html>
     );

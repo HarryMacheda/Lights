@@ -1,0 +1,9 @@
+.ColoursContainer
+{
+    width:100%;
+    overflow: hidden;
+}
+
+.ColoursContainer span {
+    display: block;
+}

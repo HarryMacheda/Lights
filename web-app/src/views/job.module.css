@@ -1,0 +1,22 @@
+.JobConatianer {
+    float: left;
+    padding: 1em;
+    width: 100%;
+}
+
+.Description {
+    color: var(--theme-dark);
+}
+
+.Description > span {
+    display: block;
+    width: 100%;
+}
+
+.Description > span:first-child {
+    font-size: larger;
+}
+
+.Description > span:not(:first-child) {
+    color: var(--theme-grey);
+}

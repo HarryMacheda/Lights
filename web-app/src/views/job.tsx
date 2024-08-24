@@ -4,6 +4,9 @@ import { useState, useEffect } from "react"
 import { Argument } from "@/components/argument";
 import { ApiClient } from "@/api/client/client";
 
+import styles from './job.module.css';
+import Button from "@/components/libraryv2/button/button";
+
 type CustomComponentProps = Readonly<{
     appId: string;
     name: string;
@@ -47,14 +50,15 @@ export function Job({ appId, name, description, job, arguments:args }: CustomCom
         return"Loading...";
     }
     return (
-        <div>
-            {name}<br/>
-            {description}<br/>
-            {job}
+        <div className={styles.JobConatianer}>
+            <div className={styles.Description}>
+                <span>{name}</span>
+                <span>{description}</span>
+            </div>
+            <hr/>
+            <Button type={"primary"} size={"medium"} text={"Submit"} onClick={() => submitJob()} />
             <br/><br/>
-            <button onClick={() => submitJob()}>submit</button>
-            <br/><br/>
-            {args.map((x:any, i:number) => {return <Argument key={i} name={x.name + " " + job} value={(values && values.length >0) ? values[i]: null} type={x.argument.controlType} handleChange={(e) => handleChange(i)(e)}/>})}
+            {args.map((x:any, i:number) => {return <><Argument key={i} name={x.name + " " + job} value={(values && values.length >0) ? values[i]: null} type={x.argument.controlType} handleChange={(e) => handleChange(i)(e)}/><br/></>})}
         </div>
     )
 }

@@ -3,11 +3,12 @@
 import { useState, useEffect, useContext } from "react"
 import { ApiClient } from '../api/client/client'
 
-import { SideNav } from "./ui/containers/sidenav"
-import {JobListItem} from './job'
+import { SideNav } from "./libraryv2/containers/sidenav/sidenav"
+import JobListItem from "./lights/jobs/jobListItem/jobListItem"
 
-import {default as styles} from '../styles/components'
 import {themeContext} from '../context/ThemeContext'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRight, faRepeat } from "@fortawesome/free-solid-svg-icons"
 
 export function Jobs({ AppId, update }: { AppId: string, update: (arg: object) => void }){
     const [single, setSingle] = useState([]);
@@ -34,21 +35,17 @@ export function Jobs({ AppId, update }: { AppId: string, update: (arg: object) =
         return (<>Loading...</>)
     }
     return(
-        <SideNav title={"Jobs"}>
-            <div>
+        <SideNav>
                 {single.map(function(x:any, i:number){
                     return (
-                        <JobListItem key={i} name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
+                        <JobListItem key={i} icon={<FontAwesomeIcon icon={faArrowRight}/>} name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
                     );
                 })}
-            </div>
-            <div>
                 {continuous.map(function(x:any, i:number){
                     return (
-                        <JobListItem key={i} name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
+                        <JobListItem key={i} icon={<FontAwesomeIcon icon={faRepeat}/>} name={x.jobName} description={x.jobDescription} job={x.job} arguments={x.arguments} handleClick={update}/>
                     );
                 })}
-            </div>
         </SideNav>
     )
 }

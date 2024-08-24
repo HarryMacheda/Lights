@@ -3,6 +3,25 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --theme-dark: #0c090d;
+  --theme-grey: #7b767c;
+  --theme-light: #feebec;
+
+  --theme-primary: #ff595e;
+  --theme-secondary: #5990ff;
+
+  --alert-warning: #F8D059;
+  --alert-warning-dark: #D7A409;
+
+  --alert-information: #6DB0F8;
+  --alert-information-dark: #0A6DD6;
+
+  --alert-success: #83D756;
+  --alert-success-dark: #5BB62B;
+
+  --alert-error: #F63741;
+  --alert-error-dark: #AF0811;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,17 +32,25 @@
   }
 }
 
+@font-face {
+  font-family: 'Moderustic';
+  src: url('../../public/fonts/Moderustic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   width: 100vw;
   height: 100vh;
   margin: 0%;
   overflow: hidden; 
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--theme-light);
+
+  font-family: Moderustic;
 }
 
+hr {
+  border: none; /* Remove the default border */
+  border-top: 1px solid var(--theme-dark); /* Customize the border color and thickness */
+}

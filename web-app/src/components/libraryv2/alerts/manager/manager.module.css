@@ -1,0 +1,18 @@
+.Dialog {
+    background-color: transparent;
+    border: 0px;
+    pointer-events: none;
+    padding: 0px;
+}
+
+.Dialog::backdrop {
+    pointer-events: none;
+}
+
+.Dialog > * {
+    pointer-events: auto; /* Enable interaction with content inside the dialog */
+}
+
+.Dialog > div {
+    margin-top: 0.5em;
+}

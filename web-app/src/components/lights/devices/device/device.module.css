@@ -1,0 +1,19 @@
+
+.Device {
+    border: 0.25em solid var(--theme-dark);
+    padding: 0.3em;
+    color: var(--theme-dark);
+}
+
+.Device a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.Device a span {
+    font-size: larger;
+}
+
+.Device a p {
+    font-size: smaller;
+}

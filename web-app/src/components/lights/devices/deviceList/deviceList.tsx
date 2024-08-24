@@ -1,16 +1,11 @@
 "use client"
-
 import { useState, useEffect, useContext } from "react"
-import { ApiClient } from '../api/client/client'
+import { ApiClient } from "@/api/client/client";
 
-import {default as styles} from '../styles/components'
-import {themeContext} from '../context/ThemeContext'
+import List from "@/components/libraryv2/containers/list/list";
+import Device from "../device/device";
 
-import Device from "./lights/devices/device/device"
-import List from "./libraryv2/containers/list/list"
-
-
-export function DeviceList()
+export default function DeviceList()
 {
     const [devices, setDevices] = useState<any>([]);
     const [isLoading, setLoading] = useState(true);
@@ -41,4 +36,3 @@ export function DeviceList()
         </List>
     )
 }
-

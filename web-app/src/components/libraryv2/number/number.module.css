@@ -1,0 +1,33 @@
+.number {
+    padding: 0.25em 0.5em;
+    border: 3px solid;
+}
+
+/* type */
+.primary {
+    border-color: var(--theme-dark);
+    background-color: var(--theme-light);
+    color: var(--theme-dark);
+}
+
+.secondary {
+    border-color: var(--theme-light);
+    background-color: var(--theme-dark);
+    color: var(--theme-light);
+}
+
+/*size*/
+.small {
+    border-radius: 0.5em;
+    font-size: x-small;
+}
+
+.medium {
+    border-radius: 0.4em;
+    font-size: small;
+}
+
+.large {
+    border-radius: 0.3em;
+    font-size: large;
+}

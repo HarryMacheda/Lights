@@ -1,0 +1,13 @@
+.Container {
+    display: flex;
+    height: 100%;
+}
+
+.Container>div:first-child {
+    max-width: 50%;
+}
+
+.Container > div:not(:first-child){
+    display: inline-flex;
+    flex-grow: 1;
+}

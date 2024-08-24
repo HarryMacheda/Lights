@@ -1,0 +1,34 @@
+.colour {
+    background-size: 0%;
+    padding: 0px;
+    appearance: none;
+    -webkit-appearance: none; /* For WebKit browsers */
+    background-color: transparent;
+    -moz-appearance: none;
+}
+
+/* type */
+.primary {
+    background-color: var(--theme-dark);
+}
+
+.secondary {
+    border-color: var(--theme-primary);
+    background-color: var(--theme-primary);
+}
+
+/*size*/
+.small {
+    border-radius: 0.5em;
+    font-size: x-small;
+}
+
+.medium {
+    border-radius: 0.4em;
+    font-size: small;
+}
+
+.large {
+    border-radius: 0.3em;
+    font-size: large;
+}

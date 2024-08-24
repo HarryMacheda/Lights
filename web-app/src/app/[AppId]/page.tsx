@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { ApiClient } from "@/api/client/client"
 
+import styles from './page.module.css'
 
 import { Jobs } from "@/components/jobs"
 import { Job } from "@/views/job"
@@ -29,11 +30,12 @@ export default function Page({ params }: { params: { AppId: string } })
       } 
   }
 
-  return (<>
+  return (
+    <div className={styles.Container}>
       <Jobs AppId={params.AppId} update={UpdateJob}/>
       <div>
         {selectedJob ? <Job key={params.AppId + "_" + selectedJob.name} appId={params.AppId} name={selectedJob.name} description={selectedJob.description} job={selectedJob.job} arguments={selectedJob.arguments}/> : null }
       </div>
-    </>
+    </div>
   )
 } 

@@ -1,0 +1,40 @@
+.Alert {
+    width: 500px;
+    border-radius: 0.5em;
+    padding: 0.25em 1em;
+    color: var(--theme-light);
+}
+
+.Alert > svg {
+    font-size: xxx-large;
+}
+
+.Alert > div {
+    display: inline-block;
+}
+
+.Alert > div > span:first-child {
+    display: block;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.Success {
+    background-color: var(--alert-success);
+    border: 3px solid var(--alert-success-dark);
+}
+
+.Warning {
+    background-color: var(--alert-warning);
+    border: 3px solid var(--alert-warning-dark);
+}
+
+.Error {
+    background-color: var(--alert-error);
+    border: 3px solid var(--alert-error-dark);
+}
+
+.Information {
+    background-color: var(--alert-information);
+    border: 3px solid var(--alert-information-dark);
+}

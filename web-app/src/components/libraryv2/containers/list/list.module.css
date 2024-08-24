@@ -1,0 +1,24 @@
+
+.List {
+    width: 100%;
+    height: 100%;
+}
+
+.Vertical > div {
+    display: block;
+    margin-top: 0.25em;
+}
+
+.Vertical:first-child {
+    margin-top: 0%;
+}
+
+.Horizontal > div {
+    display: inline-block;
+    margin-left: 0.25em;
+}
+
+.Horizontal:first-child {
+    margin-left: 0%;
+
+}

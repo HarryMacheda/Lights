@@ -1,0 +1,23 @@
+.ListItem {
+    border: 0.25em solid var(--theme-dark);
+    color: var(--theme-dark);
+
+    padding: 0.25em 0.5em;
+}
+
+.ListItem > span {
+    display: block;
+}
+
+.ListItem svg {
+    color: var(--theme-primary);
+}
+
+.ListItem > span:first-child {
+    font-size: large;
+}
+
+.ListItem > span:not(:first-child) {
+    font-size: large;
+    color: var(--theme-grey);
+}
