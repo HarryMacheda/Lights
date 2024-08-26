@@ -1,0 +1,17 @@
+.Dialog {
+    background-color: transparent;
+    border: none;
+}
+
+.Dialog > div:first-child > button {
+    float: right;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.Dialog > div:not(:first-child) {
+    background-color: var(--theme-light);
+    border: 3px solid var(--theme-dark);
+    padding: 1em;
+}

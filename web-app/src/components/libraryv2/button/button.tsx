@@ -7,7 +7,7 @@ type ButtonProps = Readonly<{
     text: string,
     type: string,
     size: string,
-    onClick: (arg: object) => void
+    onClick: (arg: any) => void
 }>;
 
 export default function Button({ text, type, size, onClick} : ButtonProps)

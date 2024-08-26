@@ -8,6 +8,8 @@ export type AlertProps = Readonly<{
     title: string;
     message: string;
     type: AlertType;
+    duration?: number;
+    onDismiss?: () => void;
 }>;
 
 export enum AlertType {
