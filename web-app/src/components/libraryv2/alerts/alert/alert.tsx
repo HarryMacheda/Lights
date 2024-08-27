@@ -19,7 +19,7 @@ export enum AlertType {
     Information
 }
 
-export function Alert({title, message, type}:AlertProps)
+export function Alert({title, message, type, onDismiss}:AlertProps)
 {
     let classes = styles.Alert;
     let icon = null;
@@ -48,6 +48,9 @@ export function Alert({title, message, type}:AlertProps)
             <div>
                 <span>{title}</span>
                 <span>{message}</span>
+            </div>
+            <div>
+                <button onClick={onDismiss}>x</button>
             </div>
         </div>
     )

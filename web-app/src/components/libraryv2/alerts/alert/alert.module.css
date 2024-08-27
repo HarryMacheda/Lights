@@ -1,12 +1,14 @@
 .Alert {
     width: 500px;
     border-radius: 0.5em;
-    padding: 0.25em 1em;
+    padding: 0.25em 0px 0.25em 0.25em;
     color: var(--theme-light);
 }
 
 .Alert > svg {
-    font-size: xxx-large;
+    width: 5%;
+    float: left;
+    font-size: x-large;
 }
 
 .Alert > div {
@@ -17,6 +19,19 @@
     display: block;
     font-size: larger;
     font-weight: bolder;
+}
+
+.Alert > div:last-child {
+    width: 5%;
+    float: right;
+}
+
+.Alert > div:last-child > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+    color: var(--theme-light);
 }
 
 .Success {

@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { AppId: string } })
 
     const createAlert = (type:AlertType) => (e:any) =>{
 
-        CreateAlert({message: "hello", title:"yo", type:type, onDismiss:Dismiss, duration:3000 })
+        CreateAlert({message: "hello", title:"yo", type:type, onDismiss:Dismiss, duration:0 })
     }
 
     const Dismiss = () => {

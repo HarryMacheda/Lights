@@ -51,8 +51,10 @@ export default function AlertManager({children}:AlertManagerProps)
         }
 
         setAlerts((prevAlerts) => ({...prevAlerts,[ID]: arg,}));
-        setTimeout(() => {DismissAlert(ID); arg.onDismiss ? arg.onDismiss() : () => {};}, arg.duration);
-
+        //duration of 0 means it never automatically expires
+        if(arg.duration != 0) {
+            setTimeout(() => {DismissAlert(ID); arg.onDismiss ? arg.onDismiss() : () => {};}, arg.duration);
+        }
     }
 
     const DismissAlert = (id:string) =>
@@ -83,6 +85,7 @@ export default function AlertManager({children}:AlertManagerProps)
                         title={alert.title}
                         type={alert.type}
                         message={alert.message}
+                        onDismiss={() => {DismissAlert(id); alert.onDismiss ? alert.onDismiss() : () => {};}}
                     />
                 ))}
             </div>

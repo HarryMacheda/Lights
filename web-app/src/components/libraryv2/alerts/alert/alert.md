@@ -29,7 +29,8 @@ The `Alert` component is designed to display different types of alerts with vari
 ### `duration`
 
 - **Type:** `number`
-- **Description:** The duration for which the alert should be displayed. This value is expected to be in milliseconds.
+- **Description:** The duration for which the alert should be displayed. This value is expected to be in milliseconds. A value of zero means
+it should never expires.
 
 ### `onDismiss`
 
